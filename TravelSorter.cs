@@ -25,7 +25,7 @@ namespace MindboxJan2017 {
     }
 
     public static class TravelSorter {
-        // Оценка сложности алгоритма: в среднем - О(n)
+        // Оценка сложности алгоритма: в среднем - О(n), в худшем - O(n^2)
         public static IEnumerable<TravelCard> Sort(IEnumerable<TravelCard> cards) {
             if(cards == null) {
                 return null;
