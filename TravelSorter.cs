@@ -34,15 +34,15 @@ namespace MindboxJan2017 {
             if (cardsNumber <= 1) {
                 return cards;
             }
-            var hashTable = new Dictionary<string, string>();
+            var moves = new Dictionary<string, string>();
             foreach (var card in cards) {
-                hashTable.Add(card.Start, card.Destination);
+                moves.Add(card.Start, card.Destination);
             }
 
             var sortedCards = new TravelCard[cardsNumber];
             var start = FindStartOfTravel(cards);
-            for (var i = 0; hashTable.ContainsKey(start); i++) {
-                var destination = hashTable[start];
+            for (var i = 0; moves.ContainsKey(start); i++) {
+                var destination = moves[start];
                 sortedCards[i] = new TravelCard(start, destination);
                 start = destination;
             }
@@ -53,14 +53,14 @@ namespace MindboxJan2017 {
             if (cards == null) {
                 return null;
             }
-            var hashTable = new Dictionary<string, string>();
+            var reverseMoves = new Dictionary<string, string>();
             foreach(var card in cards) {
-                hashTable.Add(card.Destination, card.Start); // Как бы движение в обратном направлении
+                reverseMoves.Add(card.Destination, card.Start); // Как бы движение в обратном направлении
             }
-            foreach (var item in hashTable) {
+            foreach (var item in reverseMoves) {
                 var possibleStart = item.Value; // возможный начальный пункт маршрута
                 // если его нет среди ключей, то это действительно начальный пункт
-                if (!hashTable.ContainsKey(possibleStart)) {
+                if (!reverseMoves.ContainsKey(possibleStart)) {
                     return possibleStart;
                 }
             }
