@@ -12,11 +12,8 @@ namespace MindboxJan2017 {
         public string Destination { get; set; }
 
         public override bool Equals(object obj) {
-            if (obj is TravelCard) {
-                var card = obj as TravelCard;
-                return this.Start == card.Start && this.Destination == card.Destination;
-            }
-            return false;
+            TravelCard card = obj as TravelCard;
+            return card != null ? Start == card.Start && Destination == card.Destination : false;
         }
 
         public override int GetHashCode() {
